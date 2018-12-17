@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.pzblog.parent</groupId>
+    <artifactId>pzblog-system</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  <artifactId>pzblog-interface</artifactId>
+  <dependencies>
+		<dependency>
+			<groupId>com.pzblog.parent</groupId>
+			<artifactId>pzblog-common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<!-- postgresql数据库驱动器 -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+		<!-- mysql-connector-java数据库驱动器 -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<!-- c3p0连接池 -->
+		<dependency>
+			<groupId>com.mchange</groupId>
+			<artifactId>c3p0</artifactId>
+		</dependency>
+		<!-- druid连接池 -->
+		<dependency>
+	        <groupId>com.alibaba</groupId>
+	        <artifactId>druid</artifactId>
+	    </dependency>
+		<!-- apahce数据库解析包 -->
+		<dependency>
+			<groupId>commons-dbutils</groupId>
+			<artifactId>commons-dbutils</artifactId>
+		</dependency>
+	</dependencies>
+</project>

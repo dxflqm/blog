@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../common/css/common.css" />
+		<link rel="stylesheet" href="../common/css/responsive-utilities.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<section id="responsive">
+					<h2>启用响应式特性</h2>
+					<p>通过在文档中的 <code>&lt;head&gt;</code> 标签里添加合适的meta标签并引入一个额外的样式表即可启用响应式CSS。如果你已经在定制页面编译好一个Bootstrap, 那么只需添加一个meta标签。</p>
+					<pre class="prettyprint linenums">
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+</pre>
+					<h2>被支持的设备</h2>
+					<table class="table table-bordered table-striped">
+			            <thead>
+			              <tr>
+			                <th>类型</th>
+			                <th>布局宽度</th>
+			                <th>列宽</th>
+			                <th>间隙宽度</th>
+			              </tr>
+			            </thead>
+			            <tbody>
+			              <tr>
+			                <td>大屏幕</td>
+			                <td>大于等于1200px</td>
+			                <td>70px</td>
+			                <td>30px</td>
+			              </tr>
+			              <tr>
+			                <td>默认</td>
+			                <td>大于等于980px</td>
+			                <td>60px</td>
+			                <td>20px</td>
+			              </tr>
+			              <tr>
+			                <td>平板</td>
+			                <td>大于等于768px</td>
+			                <td>42px</td>
+			                <td>20px</td>
+			              </tr>
+			              <tr>
+			                <td>手机到平板</td>
+			                <td>小于等于767px</td>
+			                <td class="muted" colspan="2">流式列，无固定宽度</td>
+			              </tr>
+			              <tr>
+			                <td>手机</td>
+			                <td>小于等于480px</td>
+			                <td class="muted" colspan="2">流式列，无固定宽度</td>
+			              </tr>
+			            </tbody>
+			        </table>
+			         <pre class="prettyprint linenums">
+/* 大屏幕 */
+@media (min-width: 1200px) { ... }
+ 
+/* 平板电脑和小屏电脑之间的分辨率 */
+@media (min-width: 768px) and (max-width: 979px) { ... }
+ 
+/* 横向放置的手机和竖向放置的平板之间的分辨率 */
+@media (max-width: 767px) { ... }
+ 
+/* 横向放置的手机及分辨率更小的设备 */
+@media (max-width: 480px) { ... }
+</pre>
+					<h2>响应式布局辅助class</h2>
+					<p>通过单独或联合使用以下列出的类，可以针对不同屏幕尺寸隐藏或显示页面内容。</p>
+					<table class="table table-bordered table-striped responsive-utilities">
+				      <thead>
+				        <tr>
+				          <th></th>
+				          <th>
+				            超小屏幕
+				            <small>手机 (&lt;768px)</small>
+				          </th>
+				          <th>
+				            小屏幕
+				            <small>平板 (≥768px)</small>
+				          </th>
+				          <th>
+				            中等屏幕
+				            <small>桌面 (≥992px)</small>
+				          </th>
+				          <th>
+				            大屏幕
+				            <small>桌面 (≥1200px)</small>
+				          </th>
+				        </tr>
+				      </thead>
+				      <tbody>
+				        <tr>
+				          <th scope="row"><code>.visible-xs-*</code></th>
+				          <td class="is-visible">可见</td>
+				          <td class="is-hidden">隐藏</td>
+				          <td class="is-hidden">隐藏</td>
+				          <td class="is-hidden">隐藏</td>
+				        </tr>
+				        <tr>
+				          <th scope="row"><code>.visible-sm-*</code></th>
+				          <td class="is-hidden">隐藏</td>
+				          <td class="is-visible">可见</td>
+				          <td class="is-hidden">隐藏</td>
+				          <td class="is-hidden">隐藏</td>
+				        </tr>
+				        <tr>
+				          <th scope="row"><code>.visible-md-*</code></th>
+				          <td class="is-hidden">隐藏</td>
+				          <td class="is-hidden">隐藏</td>
+				          <td class="is-visible">可见</td>
+				          <td class="is-hidden">隐藏</td>
+				        </tr>
+				        <tr>
+				          <th scope="row"><code>.visible-lg-*</code></th>
+				          <td class="is-hidden">隐藏</td>
+				          <td class="is-hidden">隐藏</td>
+				          <td class="is-hidden">隐藏</td>
+				          <td class="is-visible">可见</td>
+				        </tr>
+				      </tbody>
+				      <tbody>
+				        <tr>
+				          <th scope="row"><code>.hidden-xs</code></th>
+				          <td class="is-hidden">隐藏</td>
+				          <td class="is-visible">可见</td>
+				          <td class="is-visible">可见</td>
+				          <td class="is-visible">可见</td>
+				        </tr>
+				        <tr>
+				          <th scope="row"><code>.hidden-sm</code></th>
+				          <td class="is-visible">可见</td>
+				          <td class="is-hidden">隐藏</td>
+				          <td class="is-visible">可见</td>
+				          <td class="is-visible">可见</td>
+				        </tr>
+				        <tr>
+				          <th scope="row"><code>.hidden-md</code></th>
+				          <td class="is-visible">可见</td>
+				          <td class="is-visible">可见</td>
+				          <td class="is-hidden">隐藏</td>
+				          <td class="is-visible">可见</td>
+				        </tr>
+				        <tr>
+				          <th scope="row"><code>.hidden-lg</code></th>
+				          <td class="is-visible">可见</td>
+				          <td class="is-visible">可见</td>
+				          <td class="is-visible">可见</td>
+				          <td class="is-hidden">隐藏</td>
+				        </tr>
+				      </tbody>
+				    </table>
+				</section>
+			</div>
+		</div>
+		<script type="text/javascript" src="../common/js/common.js" ></script>
+		<script>
+			$(function(){
+				window.prettyPrint && prettyPrint();
+			});
+		</script>
+	</body>
+</html>

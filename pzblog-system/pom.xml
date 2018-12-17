@@ -1,0 +1,243 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.pzblog.parent</groupId>
+  <artifactId>pzblog-system</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>pzblog-common</module>
+  	<module>pzblog-interface</module>
+  	<module>pzblog-service</module>
+  	<module>pzblog-dao</module>
+  	<module>pzblog-web</module>
+  	<module>pzblog-weback</module>
+  </modules>
+  
+  <!-- 集中定义依赖版本号 -->
+	<properties>
+		<junit-version>4.10</junit-version>
+		<jstl-version>1.2</jstl-version>
+		<servlet-api-version>3.1.0</servlet-api-version>
+		<org.postgresql-version>42.1.1.jre7</org.postgresql-version>
+		<org.mysql-version>5.1.30</org.mysql-version>
+		<org.c3p0-version>0.9.5</org.c3p0-version>
+		<org.druid-version>1.1.10</org.druid-version>
+		<org.mchange-java-version>0.2.11</org.mchange-java-version>
+		<org.slf4j-version>1.7.25</org.slf4j-version>
+		<org.logback-version>1.1.7</org.logback-version>
+		<org.janino-version>2.7.8</org.janino-version>
+		<org.json-version>2.4</org.json-version>
+		<org.fastjson-version>1.2.31</org.fastjson-version>
+		
+		<org.httpclient-version>4.3.6</org.httpclient-version>
+		<org.commons-lang3-version>3.3.2</org.commons-lang3-version>
+		<org.commons-io-version>1.3.2</org.commons-io-version>
+		<org.commons-net-version>3.6</org.commons-net-version>
+		<org.commons-db-version>1.6</org.commons-db-version>
+		<org.commons-codec-version>1.5</org.commons-codec-version>
+		<org.commons-fileupload-version>1.3.3</org.commons-fileupload-version>
+		<org.poi-version>3.9</org.poi-version>
+		<org.shiro-core-version>1.3.2</org.shiro-core-version>
+		<org.mail-version>1.4.7</org.mail-version>
+		<org.redis-version>2.9.0</org.redis-version>
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<!-- 单元测试 -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit-version}</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- servelet相关 -->
+			<dependency>
+				<groupId>jstl</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${jstl-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${servlet-api-version}</version>
+			</dependency>
+			<!-- postgresql -->
+			<dependency>
+				<groupId>org.postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>${org.postgresql-version}</version>
+			</dependency>
+			<!-- mysql -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${org.mysql-version}</version>
+			</dependency>
+			<!-- c3p0连接池 -->
+			<dependency>
+				<groupId>com.mchange</groupId>
+				<artifactId>c3p0</artifactId>
+				<version>${org.c3p0-version}</version>
+			</dependency>
+			<!-- druid连接池 -->
+			<dependency>
+		        <groupId>com.alibaba</groupId>
+		        <artifactId>druid</artifactId>
+		        <version>${org.druid-version}</version>
+		    </dependency>
+			<!-- <dependency>
+			    <groupId>com.mchange</groupId>
+			    <artifactId>mchange-commons-java</artifactId>
+			    <version>${org.mchange-java-version}</version>
+			</dependency> -->
+			<!-- logback日志 -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${org.slf4j-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${org.slf4j-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${org.logback-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.janino</groupId>
+				<artifactId>janino</artifactId>
+				<version>${org.janino-version}</version>
+			</dependency>
+			<!-- json -->
+			<!-- <dependency>
+				<groupId>net.sf.json-lib</groupId>
+				<artifactId>json-lib</artifactId>
+				<classifier>jdk15</classifier>
+				<version>${org.json-version}</version>
+			</dependency> -->
+			<!--Alibaba Json处理包 -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${org.fastjson-version}</version>
+			</dependency>
+			<!-- httpclient -->
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${org.httpclient-version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<!-- Apache工具组件 -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${org.commons-lang3-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${org.commons-io-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-net</groupId>
+				<artifactId>commons-net</artifactId>
+				<version>${org.commons-net-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-dbutils</groupId>
+				<artifactId>commons-dbutils</artifactId>
+				<version>${org.commons-db-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${org.commons-codec-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${org.commons-fileupload-version}</version>
+			</dependency>
+			<!-- xml工具 -->
+			<dependency>
+				<groupId>jaxen</groupId>
+				<artifactId>jaxen</artifactId>
+				<version>1.1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>1.6.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jdom</groupId>
+				<artifactId>jdom</artifactId>
+				<version>1.1.3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>${org.poi-version}</version>
+			</dependency>
+			<!-- shiro-core -->
+			<!-- <dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-core</artifactId>
+				<version>${org.shiro-core-version}</version>
+			</dependency> -->
+			<!-- 邮件 -->
+			<dependency>
+				<groupId>javax.mail</groupId>
+				<artifactId>mail</artifactId>
+				<version>${org.mail-version}</version>
+			</dependency>
+			<!-- jedis -->
+			<dependency>
+	            <groupId>redis.clients</groupId>
+	            <artifactId>jedis</artifactId>
+	            <version>${org.redis-version}</version>
+	        </dependency>
+	        <!-- UserAgentUtils -->
+	        <dependency>
+			    <groupId>nl.bitwalker</groupId>
+			    <artifactId>UserAgentUtils</artifactId>
+			    <version>1.2.4</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<build>
+		<defaultGoal>compile</defaultGoal>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<!-- 资源文件拷贝插件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<!-- compiler插件, 设定JDK版本 -->  
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

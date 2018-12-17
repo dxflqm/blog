@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>后端管理系统</title>
+		<link rel="icon" href="static/ico/favicon.ico" />
+		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="src/login/login.css?v=1.0" />
+		<link rel="icon" type="image/png" sizes="16x16" href="static/main/logo.png">
+	</head>
+	<body>
+		<div class="login-head">
+			<input id="pageType" type="hidden" value="1" />
+			<img src="static/main/logo.png" width="50"/>
+			<hr class="login-head-hr" />
+			<span class="login-head-span">后端管理系统</span>
+		</div>
+		<div class="div-bg">
+			<div class="container font-size16">
+				<div class="row mar0 p15">
+					<div class="col-md-4 col-md-offset-8 p15 login-content">
+						<div class="login-load">
+							<img src="lib/layui/css/modules/layer/default/loading-2.gif" class="login-load-img"/>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="login-content-title">密码登录</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="error-info">
+									<img src="static/login/error.png" class="login-notice-icon" />
+									<div id="errorContent" class="error-content"></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<img src="static/login/user.png" class="content-input-icon" />
+								<input id="userEmail" type="text" placeholder="请输入用户名" class="content-input mt15 pl40 form-control" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<img src="static/login/pwd.png" class="content-input-icon" />
+								<input id="userPwd" type="password" placeholder="请输入密码" maxlength="30" class="content-input mt15 pl40 form-control" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-7">
+								<input id="imageCode" type="text" placeholder="请输入验证码" class="content-input mt15 pl15 form-control" />
+							</div>
+							<div class="col-xs-5">
+								<img src="service/common/codeServlet" alt="验证码,点击刷新！" onclick="this.src=this.src+'?temp='+Math.random();" class="content-code fl-r" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<button id="loginButton" type="button" class="content-button">登陆</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--底部-->
+		<div class="container-foot">
+			<div align="center">
+				<p>Copyright © 2018 . All Rights Reversed</p>
+			</div>
+		</div>
+		<script type="text/javascript" src="src/login/base.js?v=1.0" ></script>
+   		<script type="text/javascript" src="lib/require/require.js" data-main="src/login/login"></script>
+		<script>
+			$(function(){
+				if (typeof(Storage) !== "undefined") {
+					$("#userEmail").val(localStorage.getItem("ssoUser"));
+					$("#userPwd").val(localStorage.getItem("ssoPwd"));
+				}
+			});
+		</script>
+	</body>
+</html>

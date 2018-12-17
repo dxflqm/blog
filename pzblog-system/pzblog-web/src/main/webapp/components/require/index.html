@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../common/css/common.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<section id="summary">
+					<h2>概览</h2>
+					<p>RequireJS 是一个JavaScript模块加载器,采用AMD规范（异步模块加载机制）,使用RequireJS加载模块化脚本将提高代码的加载速度和质量。</p>
+					<p>项目地址：<a href="http://requirejs.org/docs/download.html" target="_blank">链接</a></p>
+					<h2>库引入</h2>
+					<pre class="prettyprint linenums lang-html">
+<!--开发中，以实际路径为主-->
+<script type="text/javascript" src="require.js" ></script>
+</pre>
+					<h2>正常编写方式</h2>
+					<pre class="prettyprint linenums lang-html">
+<!--index.html-->
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;script type="text/javascript" src="load.js"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;span&gt;body&lt;/span&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+
+<!--load.js-->
+function fun1(){
+  alert("it works");
+}
+fun1();
+</pre>
+<strong>当运行上面例子时不知道你是否注意到，alert执行的时候，html内容是一片空白的，即<span>body</span>并未被显示，当点击确定后，才出现，这就是JS阻塞浏览器渲染导致的结果。</strong>
+					<h2>requireJs写法</h2>
+					<pre class="prettyprint linenums lang-html">
+<!--index.html-->
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;script type="text/javascript" src="require.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript"&gt;
+            require(["load"]);
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;span&gt;body&lt;/span&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+
+<!--load.js-->
+define(function(){
+    function fun1(){
+      alert("it works");
+    }
+    fun1();
+})
+</pre>
+					<p><strong>浏览器提示了"it works"，说明运行正确，但是有一点不一样，这次浏览器并不是一片空白，body已经出现在页面中，目前为止可以知道requirejs具有如下优点：</strong></p>
+					<p><strong>1、防止js加载阻塞页面渲染</strong></p>
+					<p><strong>2、使用程序调用的方式加载js</strong></p>
+					<p><strong>3、异步绘制组件，按需加载js</strong></p>
+					<h2>API文档</h2>
+					<p><h4>更多信息，访问<a href="http://requirejs.org/" target="_blank">官方API地址</a></h4></p>
+				</section>
+			</div>
+		</div>
+		<script type="text/javascript" src="../common/js/common.js" ></script>
+		<script type="text/javascript" src="js/require.js" data-main="js/load.js"></script>
+		<script>
+			$(function(){
+				var prettyHtml = $(".lang-html");
+				for (var i=0;i < prettyHtml.length; i++) {
+					var content = $(prettyHtml[i]).html();
+					$(prettyHtml[i]).html(content.replace(/</g,"&lt;").replace(/>/g,"&gt;"));
+				}
+				window.prettyPrint && prettyPrint();
+			});
+		</script>
+	</body>
+</html>

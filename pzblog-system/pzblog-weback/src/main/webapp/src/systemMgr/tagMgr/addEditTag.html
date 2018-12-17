@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>类别管理</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="../../../lib/common/css/common.css" />
+		<style>
+			.depart-label{
+				width: 80px;
+				text-align: right;
+			}
+			.depart-input-label{
+				width: 80%;
+				height: 34px;
+				border-radius: 3px;
+				border: 1px solid #ccc;
+				color: #000000;
+			}
+			.depart-input-label:focus {
+			    border-color: #66afe9;
+			    outline: 0;
+			    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+			    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+			}
+		</style>
+	</head>
+	<body class="global-body-mp" style="margin-top: 30px;">
+		<input type="hidden" id="tagId" />
+		<input type="hidden" id="operateTag" />
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-6">
+					<label class="depart-label">标签名称</label>
+					<input class="depart-input-label" type="text" id="tagName" placeholder="请输入标签名称"/>
+				</div>
+				<div class="col-xs-6">
+					<label class="depart-label">排序</label>
+					<input class="depart-input-label" type="text" id="sort" placeholder="请输入排序"/>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 30px;">
+				<div class="col-xs-12">
+					<label class="depart-label">备注</label>
+					<input class="depart-input-label" style="width: 90%;" type="text" id="remark" placeholder="请输入..." ></input>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../../lib/common/js/commonbase.js" ></script>
+		<script type="text/javascript" src="addEditTag.js" ></script>
+	</body>
+</html>

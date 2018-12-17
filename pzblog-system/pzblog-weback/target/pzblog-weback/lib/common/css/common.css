@@ -1,0 +1,111 @@
+@import url("../../bootstrap/css/bootstrap.min.css");
+
+/**
+ * body部分
+ */
+.global-body-mp{
+	margin: 0px;
+	/*padding: 30px;
+	background-color: #f0f3f6;*/
+	padding: 0px;
+	background-color: white;
+}
+.content-main{
+	/*width: 100%;*/
+	background-color: white;
+	min-height: 480px;
+	padding: 30px 30px 15px 30px;
+}
+.content-nav{
+	font-size: 22px;
+	font-family: '微软雅黑';
+	color: #50545d;
+}
+
+/**
+ * 公共样式
+ */
+.mt15{
+	margin-top: 15px;
+}
+.mr15{
+	margin-right: 15px;
+}
+
+/**
+ * 新增按钮
+ */
+.search-button{
+	width: 100px;
+	height: 34px;
+	border:1px solid #11B1ED;
+	border-radius: 4px;
+	background-color: #0ca9f5;
+	color: white;
+	margin-left: 15px;
+	transition: background-color 0.2s;
+	-moz-transition: background-color 0.2s; /* Firefox 4 */
+	-webkit-transition: background-color 0.2s; /* Safari 和 Chrome */
+	-o-transition: background-color 0.2s; /* Opera */
+}
+.search-button:hover,
+.search-button:active{
+	background-color: #0c86c1;
+}
+/**
+ * 搜索输入框
+ */
+.search-div-input{
+	width: 100%;
+	height: 34px;
+	width: 280px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	padding-left: 15px;
+	color: #000000;
+}
+/**
+ * 搜索框输入聚焦样式
+ */
+.search-div-input:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
+
+/**
+ * 按钮
+ */
+.layui-table-cell .btn{
+	padding: 2px 12px;
+}
+.layui-table-cell{
+	position: initial;
+}
+
+/**
+ * 写作操作按钮
+ */
+.opeate-class{
+	position:absolute;
+	top: 30px;
+	right:45px;
+	width: 60px;
+	border:1px solid #d2d2d2;
+	text-align:left;
+	background-color: #FFFFFF;
+	box-shadow:0 2px 4px rgba(0,0,0,.12);
+	display: none;
+	z-index: 999;
+	
+}
+.opeate-class a{
+	display: block;
+	text-decoration: none;
+	color: #333;
+}
+.opeate-class a:hover{
+	background-color: #337ab7;
+	color:#FFFFFF;
+}

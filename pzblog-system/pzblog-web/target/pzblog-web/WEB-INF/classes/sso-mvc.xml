@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<!-- 扫描指定包下面的注解-->
+	<scan-package value="org.panzhi.blog"/>
+</beans>

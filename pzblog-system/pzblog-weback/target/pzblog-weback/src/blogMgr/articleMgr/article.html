@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+		<meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
+		<title></title>
+		<link rel="stylesheet" href="../../../lib/layui/css/layui.css" />
+		<link rel="stylesheet" href="../../../lib/common/css/common.css?v=1.2" />
+	</head>
+	<body class="global-body-mp">
+		<div class="content-main">
+			<div class="row mt15">
+				<div class="col-xs-12">
+					<input type="text" class="search-div-input" id="searchInput" placeholder="请输入文章名称" />
+					<a id="reloadClick" href="javascript:void(0);" onclick="reloadGrid()" style="position: absolute;left: 260px;text-decoration:none;">
+						<i class="layui-icon layui-icon-search" style="font-size: 26px;color: gray;"></i>
+					</a>
+					<button type="button" class="search-button" onclick="addEdit('')"><i class="layui-icon layui-icon-add-1"></i> 新增</button>
+				</div>
+			</div>
+			<div class="row mt15">
+				<div class="col-xs-12">
+					<div id="articleGrid"></div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../../lib/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="../../../lib/common/js/common.js"></script>
+		<script type="text/javascript" src="../../../lib/common/js/tip.js"></script>
+		<script type="text/javascript" src="../../../lib/layui/layui.all.js"></script>
+		<script>
+			$("#searchInput").on('input propertychange', function() {
+				var inputParam = $("#searchInput").val();
+				reloadGrid(inputParam);
+			});
+			function reloadGrid(inputParam) {
+				if(!inputParam){
+					inputParam = null;
+				}else{
+					inputParam = inputParam.trim();
+				}
+				layui.table.reload('articleGrid', {
+					where: {
+						input: inputParam
+					}
+				});
+			}
+			$(function() {
+				var tableWidth = $("#articleGrid").width() - 30;
+				var table = layui.table;
+				//展示已知数据
+				table.render({
+					id: "articleGrid",
+					elem: '#articleGrid',
+					url: remoteUrl + directory + 'article/queryAll',
+					method: 'post',
+					request: {
+						pageName: 'pageNo',
+						limitName: 'pageSize'
+					},
+					response: {
+						statusName: 'code',
+						statusCode: 200,
+						msgName: 'msg',
+						countName: 'count',
+						dataName: 'data'
+					},
+					height: '380', //'auto'
+					cols: [
+						[
+							{
+								field: 'categoryName',
+								title: '类别名称',
+								width: tableWidth * 0.1
+							},
+							{
+								field: 'tagName',
+								title: '标签名称',
+								width: tableWidth * 0.1
+							},
+							{
+								field: 'articleTypeName',
+								title: '文章类型',
+								width: tableWidth * 0.1
+							},
+							{
+								field: 'reprintHref',
+								title: '转载链接',
+								width: tableWidth * 0.1
+							},
+							{
+								field: 'articleTitle',
+								title: '文章标题',
+								width: tableWidth * 0.1
+							},
+							{
+								field: 'articleIntroduce',
+								title: '文章简介',
+								width: tableWidth * 0.1
+							},
+							{
+								field: 'visitCount',
+								title: '访问量',
+								width: tableWidth * 0.1
+							},
+							{
+								field: 'updateTime',
+								title: '最后修改时间',
+								width: tableWidth * 0.1
+							},
+							{
+								field: 'statusName',
+								title: '状态',
+								width: tableWidth * 0.1
+							},
+							{
+								field: 'operate',
+								title: '操作',
+								align:'center',
+								width: tableWidth * 0.1,
+								toolbar: '#operate'
+							}
+						]
+					],
+					loading: true,
+					page: true,
+					limits: [10, 20, 50],
+					limit: 10 //每页默认显示的数量
+				});
+			});
+			function addEdit(articleId) {
+				var tempSrc = "src/blogMgr/articleMgr/addEditArticle.html?v=1.0";
+				if(!!articleId){
+					tempSrc = tempSrc + "&articleId=" + articleId;
+				}
+				parent.popupFrame("文章信息", tempSrc);
+			}
+			function deleteById(articleId) {
+				showConfirm("确定要删除这条数据吗？",function(){
+					asyncAjax( directory + "article/delete", {articleId:articleId}, function(jsondata) {
+						closeConfirm();
+						var resultData = JSON.parse(jsondata);
+						if(resultData.code == "200"){
+							reloadGrid();
+						}else{
+							showAlert(resultData.msg,0);
+						}
+					},function(data){
+						showAlert(tip_networkError,0);
+					});
+					
+				});
+			}
+			function operateArticle(status,articleId){
+				if(status == "1"){
+					var title = "下线";
+					var operateUrl = "article/stop";
+				}else{
+					var title = "发布";
+					var operateUrl = "article/start";
+				}
+				showConfirm("确定要"+title+"吗？",function(){
+					asyncAjax( directory + operateUrl, {articleId:articleId}, function(jsondata) {
+						closeConfirm();
+						var resultData = JSON.parse(jsondata);
+						if(resultData.code == "200"){
+							reloadGrid();
+						}else{
+							showAlert(resultData.msg,0);
+						}
+					},function(data){
+						showAlert(tip_networkError,0);
+					});
+					
+				});
+			}
+			function operateEvent(id){
+				$(".opeate-class").css("display","none");
+				$("." + id).css("display","block");
+			}
+			$(document).on('click', function(e) {
+				var _con = $("#operateUtil");
+				if(!_con.is(e.target) && _con.has(e.target).length === 0){
+				    $(".opeate-class").css("display","none");
+				}
+			});
+		</script>
+		<script type="text/html" id="operate">
+			<a id="operateUtil" style="text-decoration: none;" href="javascript:operateEvent('id-{{d.articleId}}');">
+				<i class="layui-icon layui-icon-set" style="font-size: 24px; color: #11B1ED;"></i>
+			</a>
+			<ul class="opeate-class id-{{d.articleId}}">
+				<li><a href="javascript:addEdit('{{d.articleId}}');">编辑目录</a></li>
+				<li><a href="writeArticle.html?articleId={{d.articleId}}" target="_blank">书写文章</a></li>
+				{{#  if(d.status == 1){ }}
+				<li><a href="javascript:operateArticle('1','{{d.articleId}}');">下线文章</a></li>
+				{{#  }else{ }}
+				<li><a href="javascript:operateArticle('2','{{d.articleId}}');">发布文章</a></li>
+				{{#  } }}
+				<li><a href="javascript:deleteById('{{d.articleId}}');">删除</a></li>
+			</ul>
+		</script>
+	</body>
+</html>

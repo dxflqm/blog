@@ -1,0 +1,2 @@
+document.write("<script src='../../../lib/datetimepicker/bootstrap-datetimepicker.min.js'></script>");
+document.write("<script src='../../../lib/datetimepicker/bootstrap-datetimepicker.zh-CN.js'></script>");

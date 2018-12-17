@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../common/css/common.css" />
+		<link rel="stylesheet" href="css/font-awesome.min.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<section id="summary">
+					<h2>概览</h2>
+					<p>Font Awesome是一套绝佳的图标字体库和CSS框架，项目地址：<a href="http://fontawesome.dashgame.com/" target="_blank">链接</a>。</p>
+					<h2>库引入</h2>
+					<pre class="prettyprint linenums lang-html">
+<!--开发中，以实际路径为主-->
+<link rel="stylesheet" href="css/font-awesome.min.css" />
+</pre>
+					<h2>部分图标介绍</h2>
+					<div class="bs-example">
+						<div class="row fontawesome-icon-list">
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-address-book" aria-hidden="true"></i> <span class="sr-only">Example of </span>address-book</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-address-book-o" aria-hidden="true"></i> <span class="sr-only">Example of </span>address-book-o</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-address-card" aria-hidden="true"></i> <span class="sr-only">Example of </span>address-card</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-address-card-o" aria-hidden="true"></i> <span class="sr-only">Example of </span>address-card-o</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-bandcamp" aria-hidden="true"></i> <span class="sr-only">Example of </span>bandcamp</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-bath" aria-hidden="true"></i> <span class="sr-only">Example of </span>bath</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-bathtub" aria-hidden="true"></i> <span class="sr-only">Example of </span>bathtub <span class="text-muted">(alias)</span></a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-drivers-license" aria-hidden="true"></i> <span class="sr-only">Example of </span>drivers-license <span class="text-muted">(alias)</span></a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-drivers-license-o" aria-hidden="true"></i> <span class="sr-only">Example of </span>drivers-license-o <span class="text-muted">(alias)</span></a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-eercast" aria-hidden="true"></i> <span class="sr-only">Example of </span>eercast</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-envelope-open" aria-hidden="true"></i> <span class="sr-only">Example of </span>envelope-open</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> <span class="sr-only">Example of </span>envelope-open-o</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-etsy" aria-hidden="true"></i> <span class="sr-only">Example of </span>etsy</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-free-code-camp" aria-hidden="true"></i> <span class="sr-only">Example of </span>free-code-camp</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-grav" aria-hidden="true"></i> <span class="sr-only">Example of </span>grav</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-handshake-o" aria-hidden="true"></i> <span class="sr-only">Example of </span>handshake-o</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-id-badge" aria-hidden="true"></i> <span class="sr-only">Example of </span>id-badge</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-id-card" aria-hidden="true"></i> <span class="sr-only">Example of </span>id-card</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-id-card-o" aria-hidden="true"></i> <span class="sr-only">Example of </span>id-card-o</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-imdb" aria-hidden="true"></i> <span class="sr-only">Example of </span>imdb</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-linode" aria-hidden="true"></i> <span class="sr-only">Example of </span>linode</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-meetup" aria-hidden="true"></i> <span class="sr-only">Example of </span>meetup</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-microchip" aria-hidden="true"></i> <span class="sr-only">Example of </span>microchip</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-podcast" aria-hidden="true"></i> <span class="sr-only">Example of </span>podcast</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-quora" aria-hidden="true"></i> <span class="sr-only">Example of </span>quora</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-ravelry" aria-hidden="true"></i> <span class="sr-only">Example of </span>ravelry</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-s15" aria-hidden="true"></i> <span class="sr-only">Example of </span>s15 <span class="text-muted">(alias)</span></a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-shower" aria-hidden="true"></i> <span class="sr-only">Example of </span>shower</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-snowflake-o" aria-hidden="true"></i> <span class="sr-only">Example of </span>snowflake-o</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-superpowers" aria-hidden="true"></i> <span class="sr-only">Example of </span>superpowers</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-telegram" aria-hidden="true"></i> <span class="sr-only">Example of </span>telegram</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-thermometer" aria-hidden="true"></i> <span class="sr-only">Example of </span>thermometer <span class="text-muted">(alias)</span></a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-thermometer-0" aria-hidden="true"></i> <span class="sr-only">Example of </span>thermometer-0 <span class="text-muted">(alias)</span></a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-thermometer-1" aria-hidden="true"></i> <span class="sr-only">Example of </span>thermometer-1 <span class="text-muted">(alias)</span></a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-thermometer-2" aria-hidden="true"></i> <span class="sr-only">Example of </span>thermometer-2 <span class="text-muted">(alias)</span></a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-thermometer-3" aria-hidden="true"></i> <span class="sr-only">Example of </span>thermometer-3 <span class="text-muted">(alias)</span></a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-thermometer-4" aria-hidden="true"></i> <span class="sr-only">Example of </span>thermometer-4 <span class="text-muted">(alias)</span></a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-thermometer-empty" aria-hidden="true"></i> <span class="sr-only">Example of </span>thermometer-empty</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-thermometer-full" aria-hidden="true"></i> <span class="sr-only">Example of </span>thermometer-full</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-thermometer-half" aria-hidden="true"></i> <span class="sr-only">Example of </span>thermometer-half</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-thermometer-quarter" aria-hidden="true"></i> <span class="sr-only">Example of </span>thermometer-quarter</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-thermometer-three-quarters" aria-hidden="true"></i> <span class="sr-only">Example of </span>thermometer-three-quarters</a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-times-rectangle" aria-hidden="true"></i> <span class="sr-only">Example of </span>times-rectangle <span class="text-muted">(alias)</span></a></div>
+					        <div class="fa-hover col-sm-4"><a class="col-xs-11"><i class="fa fa-times-rectangle-o" aria-hidden="true"></i> <span class="sr-only">Example of </span>times-rectangle-o <span class="text-muted">(alias)</span></a></div>
+					    </div>
+					</div>
+					    <pre class="prettyprint linenums lang-html">
+<!--只需要使用CSS前缀 fa ，再加上图标名称，即可实现，如下-->
+<i class="fa fa-address-book"></i>
+</pre>
+					<h2>API文档</h2>
+					<p><h4>更多信息，访问<a href="http://fontawesome.dashgame.com/" target="_blank">官方API地址</a></h4></p>
+				</section>
+			</div>
+		</div>
+		<script type="text/javascript" src="../common/js/common.js" ></script>
+		<script>
+			$(function(){
+				var prettyHtml = $(".lang-html");
+				for (var i=0;i < prettyHtml.length; i++) {
+					var content = $(prettyHtml[i]).html();
+					$(prettyHtml[i]).html(content.replace(/</g,"&lt;").replace(/>/g,"&gt;"));
+				}
+				window.prettyPrint && prettyPrint();
+			});
+		</script>
+	</body>
+</html>
