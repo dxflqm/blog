@@ -1,7 +1,0 @@
-org/panzhi/blog/weback/controller/LoginController.class
-org/panzhi/blog/weback/controller/ArticleController.class
-org/panzhi/blog/weback/controller/CategoryController.class
-org/panzhi/blog/weback/controller/TagController.class
-org/panzhi/blog/weback/controller/LogController.class
-org/panzhi/blog/weback/servlet/dispatcher/DispatcherServlet.class
-org/panzhi/blog/weback/util/SysResouceReadUtil.class

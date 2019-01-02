@@ -1,8 +1,0 @@
-/pz/work-sts/pzblog-system/pzblog-service/src/main/java/org/panzhi/blog/service/impl/CategoryServiceImpl.java
-/pz/work-sts/pzblog-system/pzblog-service/src/main/java/org/panzhi/blog/service/async/AsyncUserVisitService.java
-/pz/work-sts/pzblog-system/pzblog-service/src/main/java/org/panzhi/blog/service/impl/LogServiceImpl.java
-/pz/work-sts/pzblog-system/pzblog-service/src/main/java/org/panzhi/blog/service/impl/TagServiceImpl.java
-/pz/work-sts/pzblog-system/pzblog-service/src/main/java/org/panzhi/blog/service/impl/UserServiceImpl.java
-/pz/work-sts/pzblog-system/pzblog-service/src/main/java/org/panzhi/blog/service/async/AsyncArticleVisitService.java
-/pz/work-sts/pzblog-system/pzblog-service/src/main/java/org/panzhi/blog/service/impl/ArticleServiceImpl.java
-/pz/work-sts/pzblog-system/pzblog-service/src/main/java/org/panzhi/blog/service/impl/CommentServiceImpl.java
