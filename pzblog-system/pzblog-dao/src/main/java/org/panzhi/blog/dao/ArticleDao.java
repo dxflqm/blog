@@ -25,17 +25,17 @@ public interface ArticleDao {
 	List<Article> findList(Page page) throws CommonException;
 	
 	/**
-	 * 查询总行数
-	 */
-	int count(Integer status,Page page) throws CommonException;
-	
-	/**
 	 * 按照类别查询所有文章
 	 * @param categoryId
 	 * @return
 	 * @throws CommonException
 	 */
-	List<Article> findListByCategoryId(String categoryId) throws CommonException;
+	List<Article> findListByCategoryId(String categoryId,Page page) throws CommonException;
+	
+	/**
+	 * 查询总行数
+	 */
+	int count(Article article,Page page) throws CommonException;
 	
 	/**
 	 * 通过文章ID查询文章信息

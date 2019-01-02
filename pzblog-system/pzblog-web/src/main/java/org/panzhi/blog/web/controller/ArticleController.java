@@ -1,7 +1,6 @@
 package org.panzhi.blog.web.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 import java.util.concurrent.Executors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +45,7 @@ public class ArticleController {
 			logger.error("文章控制层:查询文章信息异常",e);
 			return BuildResponseMsg.buildCommonFailMsg(e.getErrMsg());
 		} catch (UnsupportedEncodingException e) {
-			logger.error("部门信息控制层:查询所有部门信息异常",e);
+			logger.error("文章控制层:查询文章信息异常",e);
 			return BuildResponseMsg.buildFailMsgNoData(CommonErrorMsg.REQUEST_ERROR);
 		}
 	}
@@ -56,13 +55,13 @@ public class ArticleController {
 			@RequestParam("categoryId") String categoryId){
 		try {
 			Assert.isEmpty(categoryId, "类别ID不能为空");
-			List<ArticleVo> data = articleService.findListByCategoryId(categoryId);
-			return BuildResponseMsg.buildSuccessMsgAndData(data);
+			PageVo<ArticleVo> data = articleService.findListByCategoryId(new PageVo<ArticleVo>(request,response),categoryId);
+			return BuildResponseMsg.buildCustomeMsg(data);
 		} catch (CommonException e) {
 			logger.error("文章控制层:通过类别ID查询文章信息异常，类别ID：" + categoryId,e);
 			return BuildResponseMsg.buildCommonFailMsg(e.getErrMsg());
 		} catch (UnsupportedEncodingException e) {
-			logger.error("部门信息控制层:查询所有部门信息异常",e);
+			logger.error("文章控制层:通过类别ID查询文章信息异常",e);
 			return BuildResponseMsg.buildFailMsgNoData(CommonErrorMsg.REQUEST_ERROR);
 		}
 	}
@@ -80,7 +79,7 @@ public class ArticleController {
 			logger.error("文章控制层:通过文章ID查询文章信息异常，文章ID：" + articleId,e);
 			return BuildResponseMsg.buildCommonFailMsg(e.getErrMsg());
 		} catch (UnsupportedEncodingException e) {
-			logger.error("部门信息控制层:查询所有部门信息异常",e);
+			logger.error("文章控制层:通过文章ID查询文章信息异常",e);
 			return BuildResponseMsg.buildFailMsgNoData(CommonErrorMsg.REQUEST_ERROR);
 		}
 	}

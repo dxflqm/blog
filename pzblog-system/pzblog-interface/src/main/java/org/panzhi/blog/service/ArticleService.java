@@ -2,7 +2,6 @@ package org.panzhi.blog.service;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
-import java.util.List;
 
 import org.panzhi.blog.common.exception.CommonException;
 import org.panzhi.blog.web.dto.ArticleDto;
@@ -15,7 +14,7 @@ public interface ArticleService {
 	
 	PageVo<ArticleVo> findList(PageVo<ArticleVo> page) throws CommonException, UnsupportedEncodingException;
 	
-	List<ArticleVo> findListByCategoryId(String categoryId) throws CommonException, UnsupportedEncodingException;
+	PageVo<ArticleVo> findListByCategoryId(PageVo<ArticleVo> page,String categoryId) throws CommonException, UnsupportedEncodingException;
 	
 	ArticleVo findArticleById(String articleId) throws CommonException, UnsupportedEncodingException;
 	

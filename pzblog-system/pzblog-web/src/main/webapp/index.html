@@ -129,19 +129,21 @@
 				asyncAjax("service/article/queryAll", {pageNo:currentNo}, function(resultJson) {
 					var result = $.parseJSON(resultJson);
 					if('200' == result.code){
+						debugger
 						//加载主体数据
-						new Vue({
+						var vm = new Vue({
 							el: '#siteContent', 
 							data: {sites: result.data},
 							methods:{
 								routeArticle: function (articleId) {
 									loadUrl(articleURL + "?articleId=" + articleId);
-							   },
-							   routeCategory: function (categoryId,categoryName) {
+							    },
+							    routeCategory: function (categoryId,categoryName) {
 									loadUrl(articleTimeURL + "?categoryId=" + categoryId + "&categoryName=" + escape(categoryName));
 							    }
 							}
 						});
+						vm.sites.splice(result.data.length);
 						$("#siteContent").show();
 						loadPaginator(result.pageNo,result.count);
 					}else{

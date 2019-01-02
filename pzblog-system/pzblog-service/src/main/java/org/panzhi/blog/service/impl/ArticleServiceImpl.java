@@ -46,7 +46,7 @@ public class ArticleServiceImpl implements ArticleService {
 	
 	@Override
 	public PageVo<ArticleVo> findAllList(PageVo<ArticleVo> page) throws CommonException, UnsupportedEncodingException {
-		int count = articleDao.count(null,page);
+		int count = articleDao.count(new Article(),page);
 		page.setCount(count);
 		List<Article> list = articleDao.findAllList(page);
 		List<ArticleVo> data = warpArticleToView(list);
@@ -56,7 +56,9 @@ public class ArticleServiceImpl implements ArticleService {
 
 	@Override
 	public PageVo<ArticleVo> findList(PageVo<ArticleVo> page) throws CommonException, UnsupportedEncodingException {
-		int count = articleDao.count(1,page);
+		Article article = new Article();
+		article.setStatus(1);
+		int count = articleDao.count(article,page);
 		page.setCount(count);
 		List<Article> list = articleDao.findList(page);
 		List<ArticleVo> data = warpArticleToView(list);
@@ -65,10 +67,16 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public List<ArticleVo> findListByCategoryId(String categoryId) throws CommonException, UnsupportedEncodingException {
-		List<Article> list = articleDao.findListByCategoryId(categoryId);
+	public PageVo<ArticleVo> findListByCategoryId(PageVo<ArticleVo> page,String categoryId) throws CommonException, UnsupportedEncodingException {
+		Article article = new Article();
+		article.setStatus(1);
+		article.setCategoryId(categoryId);
+		int count = articleDao.count(article,page);
+		page.setCount(count);
+		List<Article> list = articleDao.findListByCategoryId(categoryId,page);
 		List<ArticleVo> data = warpArticleToView(list);
-		return data;
+		page.setData(data);
+		return page;
 	}
 
 	@Override

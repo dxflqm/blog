@@ -53,11 +53,24 @@ public class ArticleDaoImpl implements ArticleDao {
 	}
 	
 	@Override
-	public int count(Integer status,Page page) throws CommonException {
+	public List<Article> findListByCategoryId(String categoryId,Page page) throws CommonException {
+		try {
+			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
+			String sql = "select article_id AS articleId,article_title AS articleTitle,article_type AS articleType,reprint_href AS reprintHref,article_introduce AS articleIntroduce,category_id AS categoryId,tag_id AS tagId,status AS status,create_time AS createTime,update_time AS updateTime from tb_article where delete_flag = '0' and status = '1' and category_id = ? order by update_time DESC LIMIT ?,?";
+			List<Article> articleList = runner.query(sql, new BeanListHandler<Article>(Article.class), categoryId, page.getCurrentRow(), page.getPageSize());
+			return articleList;
+		} catch (Exception e) {
+			logger.error("通过类别ID分页查询所有文章信息数据失败!类别ID："+categoryId, e);
+			throw new CommonException(CommonErrorMsg.OPERATE_DB_ERROR);
+		}
+	}
+
+	@Override
+	public int count(Article article,Page page) throws CommonException {
 		try {
 			QueryRunner queryRunner = new QueryRunner(JdbcUtils.getDataSource());
 			String param = page.getInput() == null ? "":page.getInput();
-			String sql = "SELECT count(*) FROM tb_article WHERE delete_flag = '0' and article_title like '" + param + "%'" + (status == null ? "" : " and status  = '" + status + "'");
+			String sql = "SELECT count(*) FROM tb_article WHERE delete_flag = '0' and article_title like '" + param + "%'" + (article.getStatus() == null ? "" : " and status  = '" + article.getStatus() + "'") + (article.getCategoryId() == null ? "" : " and category_id  = '" + article.getCategoryId() + "'");
 			@SuppressWarnings({ "unchecked", "rawtypes" })
 			Object obj = queryRunner.query(sql, new ScalarHandler(1));
 			return ((Long) obj).intValue();
@@ -66,20 +79,6 @@ public class ArticleDaoImpl implements ArticleDao {
 			throw new CommonException(CommonErrorMsg.OPERATE_DB_ERROR);
 		}
 	}
-
-	@Override
-	public List<Article> findListByCategoryId(String categoryId) throws CommonException {
-		try {
-			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-			String sql = "select article_id AS articleId,article_title AS articleTitle,article_type AS articleType,reprint_href AS reprintHref,article_introduce AS articleIntroduce,category_id AS categoryId,tag_id AS tagId,status AS status,create_time AS createTime,update_time AS updateTime from tb_article where delete_flag = '0' and status = '1' and category_id = ? order by update_time DESC";
-			List<Article> articleList = runner.query(sql, new BeanListHandler<Article>(Article.class), categoryId);
-			return articleList;
-		} catch (Exception e) {
-			logger.error("通过类别ID分页查询所有文章信息数据失败!类别ID："+categoryId, e);
-			throw new CommonException(CommonErrorMsg.OPERATE_DB_ERROR);
-		}
-	}
-
 	
 
 	@Override
