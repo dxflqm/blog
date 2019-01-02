@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebFilter(filterName = "CrossOriginControl",urlPatterns = "/*")
 public class CrossOriginControl implements Filter{
 	
-	private boolean isCross = true;
+	private boolean isCross = false;
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
