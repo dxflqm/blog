@@ -1,3 +1,0 @@
-Sitemap: http://pzblog.cn/sitemap.xml
-User-agent:*
-Allow:/
